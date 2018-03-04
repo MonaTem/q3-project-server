@@ -3,23 +3,24 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "nodemon server.js",
     "knex": "knex"
   },
   "eslintConfig": {
     "extends": "react-app"
   },
   "dependencies": {
-    "body-parser": "~1.18.2",
-    "cookie-parser": "~1.4.3",
+    "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
     "cors": "^2.8.4",
     "debug": "~2.6.9",
+    "dotenv": "^5.0.1",
     "express": "^4.15.5",
     "knex": "^0.14.4",
-    "morgan": "~1.9.0",
+    "morgan": "^1.9.0",
     "npm": "^5.7.1",
     "pg": "^7.4.1",
-    "serve-favicon": "~2.4.5"
+    "serve-favicon": "^2.4.5"
   },
   "devDependencies": {
     "nodemon": "^1.17.1"
