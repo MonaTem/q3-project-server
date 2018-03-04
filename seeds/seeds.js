@@ -22,6 +22,6 @@ exports.seed =  async function(knex, Promise) {
   await knex.raw("INSERT INTO suits (suitname) VALUES ('Swords')");
   await knex.raw("INSERT INTO suits (suitname) VALUES ('Pentacles')");
   await knex.raw("INSERT INTO suits (suitname) VALUES ('Cups')");
-  await knex.raw("INSERT INTO cards (cardname, suitid, cardinfo) VALUES ('The Fool', 1, 'The Fool card in the Tarot deck can represent the innocent naïf unencumbered by obligations and open to life$$s$$ adventures. It can also be the spiritual innocent, one whose spirit welcomes bliss with an open heart.')");
-  await knex.raw("INSERT INTO cards (cardname, suitid, cardinfo) VALUES ('The Queen of Cups', 5, 'Much about this card is mysterious or indecipherable.')");
+  await knex.raw("INSERT INTO cards (cardname, suitid, cardinfo, card_image_url) VALUES ('The Fool', 1, 'The Fool card in the Tarot deck can represent the innocent naïf unencumbered by obligations and open to lifes adventures. It can also be the spiritual innocent, one whose spirit welcomes bliss with an open heart.','https://imgur.com/a/SGQU5')");
+  await knex.raw("INSERT INTO cards (cardname, suitid, cardinfo, card_image_url) VALUES ('The Queen of Cups', 5, 'Much about this card is mysterious or indecipherable.','https://imgur.com/a/GLP5W')");
 };

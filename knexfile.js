@@ -23,6 +23,6 @@ module.exports = {
 module.exports = {
     development: {
       client: 'pg',
-      connection: 'postgres://localhost:5432/tarot'
+      connection: 'postgres://localhost:5432/tarot_q3'
     }
   }
