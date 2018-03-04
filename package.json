@@ -6,6 +6,9 @@
     "start": "node ./bin/www",
     "knex": "knex"
   },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
   "dependencies": {
     "body-parser": "~1.18.2",
     "cookie-parser": "~1.4.3",
