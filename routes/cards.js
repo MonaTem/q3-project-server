@@ -8,28 +8,31 @@ app.get('/', function(req, res, next) {
   response.send('The slash route is working, so you better start working.');
 });
 
-console.log("before knex select in cards");
+console.log("before knex select / in cards");
 // var stuff = "";
 
 app.get('/', (request, response) => {
    knex.select('id', 'cardname', 'card_image_url').from('cards')
-.then( rows => {
-  console.log( rows );
-  return response.json( rows );
+   .then( rows => {
+      console.log( rows );
+      return response.json( rows );
 });
 });
+console.log("after knex select / in cards");
+
+console.log("before knex select /cards in cards");
 
 app.get('/cards', (request, response) => {
    knex.select('id', 'cardname', 'card_image_url').from('cards')
-.then( rows => {
-  console.log( rows );
-  return response.json( rows );
+   .then( rows => {
+      console.log( rows );
+      return response.json( rows );
 });
 });
 // */
 
 // console.log(stuff);
 
-console.log("after knex select in cards");
+console.log("after knex select /cards in cards");
 
 module.exports = app;
