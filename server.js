@@ -1,16 +1,17 @@
 var express = require('express');
+var app = express();
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+const knex = require('./db');
 var dotenv = require('dotenv').config();
 
 const cards = require('./routes/cards');
 // var users = require('./routes/users');
 
-var app = express();
-const PORT = process.env.PORT || 6000;
+const PORT = 6000;
 
 
 // view engine setup
@@ -18,45 +19,49 @@ const PORT = process.env.PORT || 6000;
 // app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+// app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 
 // Setup Middleware
 
-app.use(express.static('public'))
+// app.use(express.static('public'))
 app.use(logger('combined'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
 
 // Add headers
-app.use(function (req, res) {
+// app.use(function (req, res) {
+//
+//     // Website you wish to allow to connect
+//     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8888');
+//
+//     // Request methods you wish to allow
+//     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+//
+//     // Request headers you wish to allow
+//     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+//
+//     // Set to true if you need the website to include cookies in the requests sent
+//     // to the API (e.g. in case you use sessions)
+//     res.setHeader('Access-Control-Allow-Credentials', true);
+//
+//     // Pass to next layer of middleware
+//     // next();
+// });
 
-    // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8888');
+// app.use('/', cards);
 
-    // Request methods you wish to allow
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+app.get('/', (request, response) => {
+  response.send('Slash route is working, so you better be working.');
+})
 
-    // Request headers you wish to allow
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-
-    // Set to true if you need the website to include cookies in the requests sent
-    // to the API (e.g. in case you use sessions)
-    res.setHeader('Access-Control-Allow-Credentials', true);
-
-    // Pass to next layer of middleware
-    // next();
+app.get('/cards', (request, response) => {
+  console.log( 'GET /cards' );
+  knex('cards')
+  .then( rows => response.json( rows ))
+  .catch( error => { console.error(error); });
 });
-
-app.use('/', function(req, res) {
-    console.log("the original url is " + req.originalUrl);
-});
-
-app.use('/', cards);
-// app.use('/users', users);
-
-app.use('/cards', cards);
 
 // catch 404 and forward to error handler
 app.use(function(req, res) {
@@ -64,7 +69,7 @@ app.use(function(req, res) {
   err.status = 404;
   // next(err);
 });
-/*
+
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
@@ -75,11 +80,8 @@ app.use(function(err, req, res, next) {
    res.status(err.status || 500);
   // res.render('error');
 });
-*/
+
 
 app.listen(PORT, () => {
   console.log('Server listening on ', PORT);
 });
-
-
-module.exports = app;
