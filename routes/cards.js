@@ -18,6 +18,7 @@ app.get('/', (request, response) => {
       return response.json( rows );
 });
 });
+
 console.log("after knex select / in cards");
 
 console.log("before knex select /cards in cards");
