@@ -9,10 +9,11 @@ app.get('/', function(req, res, next) {
 });
 
 app.get('/Cards', (request, response) => {
-  knex('cards')
-  .then( rows => response.json(cards));
+   knex.select('cardname', 'card_image_url').from('cards')
+  .then(rows => response.json(cards))
+  .then(console.log(response.json(cards)));
 });
 
-console.log('at end of cards route');
+// console.log(rows);
 
 module.exports = app;
