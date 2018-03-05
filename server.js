@@ -30,7 +30,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Add headers
-app.use(function (req, res, next) {
+app.use(function (req, res) {
 
     // Website you wish to allow to connect
     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8888');
@@ -46,21 +46,21 @@ app.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Credentials', true);
 
     // Pass to next layer of middleware
-    next();
+    // next();
 });
 
 app.use('/', cards);
 // app.use('/users', users);
 
-app.use('/Cards', cards);
+// app.use('/cards', cards);
 
 // catch 404 and forward to error handler
 app.use(function(req, res) {
   var err = new Error('Not Found');
   err.status = 404;
-  next(err);
+  // next(err);
 });
-
+/*
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
@@ -71,6 +71,7 @@ app.use(function(err, req, res, next) {
    res.status(err.status || 500);
   // res.render('error');
 });
+*/
 
 app.listen(PORT, () => {
   console.log('Server listening on ', PORT);
