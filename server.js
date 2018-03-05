@@ -49,10 +49,14 @@ app.use(function (req, res) {
     // next();
 });
 
+app.use('/', function(req, res) {
+    console.log("the original url is " + req.originalUrl);
+});
+
 app.use('/', cards);
 // app.use('/users', users);
 
-// app.use('/cards', cards);
+app.use('/cards', cards);
 
 // catch 404 and forward to error handler
 app.use(function(req, res) {
