@@ -4,9 +4,9 @@ const app = require('express').Router();
 // console.log("we are in the cards route");
 
 /* GET home page. */
-app.get('/', function(req, res, next) {
-  response.send('The slash route is working, so you better start working.');
-});
+// app.get('/', function(req, res, next) {
+  // response.send('The slash route is working, so you better start working.');
+// });
 
 console.log("before knex select / in cards");
 // var stuff = "";
