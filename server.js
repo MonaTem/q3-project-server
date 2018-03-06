@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 const knex = require('./db');
 var dotenv = require('dotenv').config();
 
-const cards = require('./routes/cards');
+//const cards = require('./routes/cards');
 // var users = require('./routes/users');
 
 const PORT = 6000;
@@ -34,7 +34,7 @@ app.use(cookieParser());
 // app.use(function (req, res) {
 //
 //     // Website you wish to allow to connect
-//     res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8888');
+       // res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
 //
 //     // Request methods you wish to allow
 //     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -48,9 +48,15 @@ app.use(cookieParser());
 //
 //     // Pass to next layer of middleware
 //     // next();
-// });
+ // });
 
 // app.use('/', cards);
+
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
 
 app.get('/', (request, response) => {
   response.send('Slash route is working, so you better be working.');
