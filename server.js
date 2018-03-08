@@ -63,11 +63,18 @@ app.get('/', (request, response) => {
 })
 
 app.get('/cards', (request, response) => {
-  console.log( 'GET /cards' );
+  // console.log( 'GET /cards' );
   knex('cards')
   .then( rows => response.json( rows ))
   .catch( error => { console.error(error); });
 });
+
+app.get('/Card'), (request, response) => {
+   knex.raw('SELECT * FROM cards WHERE id = ')
+   .then( row => response.json( row ))
+   .catch( error => { console.error(error); });
+
+}
 
 // catch 404 and forward to error handler
 app.use(function(req, res) {
