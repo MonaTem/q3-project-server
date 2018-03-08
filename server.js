@@ -69,12 +69,12 @@ app.get('/cards', (request, response) => {
   .catch( error => { console.error(error); });
 });
 
-app.get('/Card'), (request, response) => {
-   knex.raw('SELECT * FROM cards WHERE id = ')
-   .then( row => response.json( row ))
-   .catch( error => { console.error(error); });
-
-}
+// app.get('/Card'), (request, response) => {
+//    knex.raw('SELECT * FROM cards WHERE id = ')
+//    .then( row => response.json( row ))
+//    .catch( error => { console.error(error); });
+//
+// }
 
 // catch 404 and forward to error handler
 app.use(function(req, res) {
