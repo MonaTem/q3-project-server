@@ -11,7 +11,7 @@ var dotenv = require('dotenv').config();
 //const cards = require('./routes/cards');
 // var users = require('./routes/users');
 
-const PORT = 6000;
+const PORT = 8000;
 
 
 // view engine setup
